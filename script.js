@@ -35,3 +35,35 @@ column.addEventListener("drop",(e)=>{
 allowDragEvent(todo);
 allowDragEvent(progress);
 allowDragEvent(done);
+
+const togglemodalbutton = document.querySelector("#toggle-modal")
+const modalbg = document.querySelector(".modal .bg")
+const modal = document.querySelector(".modal")
+const addtaskbutton = document.querySelector("#add-new-task")
+
+togglemodalbutton.addEventListener("click", ()=>{
+    modal.classList.toggle("show-modal")
+})
+
+modalbg.addEventListener("click", ()=>{
+    modal.classList.remove("show-modal")
+})
+
+addtaskbutton.addEventListener("click",()=>{
+    const tasktitle = document.querySelector("#add-title-input").value
+    const taskdescription = document.querySelector("#add-description-input").value
+
+   const div = document.createElement("div")
+    div.classList.add("task")
+    div.setAttribute("draggable","true")
+
+    div.innerHTML= `<h3>${tasktitle}</h3>
+    <p>${taskdescription}</p>
+    <button>Delete</button>`
+    
+    todo.appendChild(div)
+
+    modal.classList.remove("show-modal")
+          
+})
+

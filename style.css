@@ -127,7 +127,7 @@ button:active{
     align-items: center;
     justify-content: center;
 }
-.modal .active{
+.modal.show-modal{
     display: flex;
 }
 .modal .bg{
