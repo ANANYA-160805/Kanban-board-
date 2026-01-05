@@ -1,6 +1,7 @@
 const todo =document.getElementById('todo');
 const progress =document.getElementById('progress');
 const done =document.getElementById('done');
+const columns =  [ todo,progress,done ];
 let draggedElement=null;
 
 const tasks =document.querySelectorAll('.task');
@@ -10,6 +11,7 @@ tasks.forEach(task=>{
         draggedElement=task;
     })
 })
+
 
 
 function allowDragEvent(column){
@@ -31,6 +33,14 @@ column.addEventListener("drop",(e)=>{
     column.classList.remove("hover-over");
 })
 }
+
+columns.forEach(column =>{
+    const tasks = column.querySelectorAll(".task");
+    const count = column.querySelector(".right");
+
+    count.textContent = tasks.length;
+})
+
 
 allowDragEvent(todo);
 allowDragEvent(progress);
@@ -62,6 +72,17 @@ addtaskbutton.addEventListener("click",()=>{
     <button>Delete</button>`
     
     todo.appendChild(div)
+ 
+   columns.forEach(column =>{
+    const tasks = column.querySelectorAll(".task");
+    const count = column.querySelector(".right");
+
+    count.textContent = tasks.length;
+})
+    
+    div.addEventListener("drag",(e)=>{
+        draggedElement=div;
+    })
 
     modal.classList.remove("show-modal")
           
